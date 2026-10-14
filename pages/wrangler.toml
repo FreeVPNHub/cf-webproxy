@@ -1,0 +1,6 @@
+name = "cf-webproxy-pages"
+pages_build_output_dir = "./dist"
+compatibility_date = "2026-09-18"
+
+# PROXY_SECRET is a runtime Secret set in Pages, never embedded in the bundle.
+# No Durable Objects, KV, D1 or companion Worker is required.

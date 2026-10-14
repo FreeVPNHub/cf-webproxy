@@ -1,0 +1,22 @@
+{
+  "name": "cf-webproxy",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "test": "node --test",
+    "test:pages": "npm run build --prefix pages && node pages/smoke.mjs"
+  },
+  "devDependencies": {
+    "wrangler": "^4.37.0"
+  },
+  "cloudflare": {
+    "bindings": {
+      "PROXY_SECRET": {
+        "description": "Telegram WEB Proxy 密钥。请填写 32 位小写十六进制字符串，也可以使用 dd 加 32 位十六进制字符串。可运行 openssl rand -hex 16 生成。"
+      }
+    }
+  }
+}

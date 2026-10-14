@@ -1,0 +1,25 @@
+name = "cf-webproxy"
+main = "src/index.js"
+compatibility_date = "2026-09-18"
+workers_dev = true
+
+[durable_objects]
+bindings = [
+  { name = "SESSIONS", class_name = "WebProxySession" }
+]
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["WebProxySession"]
+
+[vars]
+# Optional: your custom hostname without https://. Empty accepts the request hostname.
+PUBLIC_HOSTNAME = "666"
+MAX_STREAMS = "64"
+SESSION_TTL_SECONDS = "300"
+
+# Set secrets before deployment (never commit them):
+#   npx wrangler secret put PROXY_SECRET
+# PROXY_SECRET: 32 lowercase hex chars, optionally prefixed with dd.
+# ee/FakeTLS secrets are intentionally unsupported by Telegram WEB Proxy mode.
+
